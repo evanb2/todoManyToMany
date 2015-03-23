@@ -1,0 +1,2 @@
+SELECT * FROM tasks WHERE check_box = 'true'
+UPDATE categories_tasks WHERE task_id = '{$this->getId()}'

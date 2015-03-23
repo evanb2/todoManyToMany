@@ -59,7 +59,8 @@
     //CREATE category
     $app->post("/tasks", function() use ($app) {
         $description = $_POST['description'];
-        $task = new Task($description);
+        $checkbox = $_POST['checkbox'];
+        $task = new Task($description, $checkbox);
         $task->save();
         return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
     });
@@ -116,7 +117,7 @@
         return $app['twig']->render('tasks.twig', array('task' => $task, 'categories' =>
             $task->getCategories(), 'all_categories' => Category::getAll()));
     });
-    
+
     return $app;
 
 

@@ -3,13 +3,13 @@
     {
         private $description;
         private $id;
+        private $checkbox;
 
-
-        function __construct($description, $id = null)
+        function __construct($description, $id = null, $checkbox = 0)
         {
             $this->description = $description;
             $this->id = $id;
-
+            $this->checkbox = $checkbox;
         }
 
         function setId($new_id)
@@ -33,12 +33,23 @@
             return $this->description;
         }
 
+        function setCheckbox($new_checkbox)
+        {
+            $this->checkbox = (boolean) $new_checkbox;
+        }
+
+        function getCheckbox()
+        {
+            return $this->checkbox;
+        }
+
         function save()
         {
             $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description) VALUES
                 ('{$this->getDescription()}') RETURNING id;");
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
+            $var_dump($result);
         }
 
         function update($new_description)
@@ -46,6 +57,13 @@
             $GLOBALS['DB']->exec("UPDATE tasks SET description = '{$new_description}'
                 WHERE id = {$this->getId()};");
             $this->setDescription($new_description);
+        }
+
+        function checkBox()
+        {
+            $check = $GLOBALS['DB']->exec(" ");
+            $check->save();
+            $GLOBALS['DB']->exec()
         }
 
         function delete()
@@ -61,7 +79,8 @@
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
                 $id = $task['id'];
-                $new_task = new Task($description, $id);
+                $checkbox = $task['check_box'];
+                $new_task = new Task($description, $id, $checkbox);
                 array_push($tasks, $new_task);
             }
             return $tasks;

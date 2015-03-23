@@ -18,6 +18,7 @@
 
     <form action="/add_categories" method="post">
         <input id="task_id" name="task_id" type="hidden" value="{{ task.getId }}">
+        
         <label for="category_id">Select a category</label>
         <select id="category_id" name="category_id" type="text">
             {% for category in all_categories %}
