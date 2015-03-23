@@ -9,7 +9,7 @@
         {
             $this->description = $description;
             $this->id = $id;
-            $this->category_id = $category_id;
+            
         }
         //setting $new_id as an integer and equal to our $id
         function setId($new_id)
@@ -44,6 +44,16 @@
             $this->setId($result['id']);
         }
 
+        function update($new_description)
+        {
+            $GLOBALS['DB']->exec("UPDATE tasks SET description = '{$new_description}' WHERE id = {$this->getId()};");
+            $this->setDescription($new_description);
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM tasks WHERE id = {$this->getId()};");
+        }
 
         static function getAll()
         {

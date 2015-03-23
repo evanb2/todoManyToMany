@@ -9,12 +9,11 @@
     require_once "src/Category.php";
 
     $DB = new PDO('pgsql:host=localhost;dbname=to_do_test');
-    //setting new DB variable and connect to to_do_test database
 
     class TaskTest extends PHPUnit_Framework_TestCase
     {
 
-        protected function tearDown()//clearing the table after each test, protected??
+        protected function tearDown()
         {
             Task::deleteAll();
             Category::deleteAll();
@@ -23,7 +22,7 @@
         function test_getDescription()
         {
             //Arrange
-            $desctiption = "Do dishes";
+            $description = "Do dishes";
             $test_task = new Task($description);
 
             //Act
@@ -41,6 +40,7 @@
 
             //Act
             $test_task->setDescription("Drink coffee");
+            $result = $test_task->getDescription();
 
             //Assert
             $this->assertEquals("Drink coffee", $result);
@@ -52,13 +52,13 @@
              $description = "Wash the dog";
              $id = 1;
              $test_Task = new Task($description, $id);
-             $test_Task->save();
+
 
              //Act
              $result = $test_Task->getId();
 
              // Assert
-             $this->assertEquals($description, $result);
+             $this->assertEquals(1, $result);
 
          }
 
