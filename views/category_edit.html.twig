@@ -1,3 +1,9 @@
+<html>
+    <head>
+        <title>Categories</title>
+    </head>
+
+<body>
 <h1>Update the {{ category.getName }} category </h1>
 
 <form action="/categories/{{ category.getId }}" method="post">
@@ -13,4 +19,9 @@
     <input name="_method" type="hidden" value="delete">
 
     <button type="submit">Delete this category</button>
-</form>    
+</form>
+
+
+
+</body>
+</html>

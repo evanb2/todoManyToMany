@@ -3,18 +3,18 @@
     <title>To Do List</title>
 </head>
 <body>
-    <h1>{{ category.getName }}</h1>
+    <h1></h1>
 
     {% if categories is not empty %}
         <p>Here are all your categories:</p>
         <ul>
             {% for category in categories %}
-                <li>{{ category.getName }}</li>
+                <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
 
-    <form action='/category' method='post'>
+    <form action='/categories' method='post'>
         <label for='name'>Category name</label>
         <input id='name' name='name' type='text'>
 
