@@ -147,7 +147,7 @@
 
 
 
-       function testUpdate()
+       function test_update()
        {
             //Arrange
             $name = "Work stuff";
@@ -164,7 +164,7 @@
             $this->assertEquals("Home stuff", $test_category->getName());
         }
 
-        function testDelete()
+        function test_delete()
         {
             //Arrange
             $name = "Work stuff";
@@ -202,7 +202,6 @@
 
             //Assert
             $this->assertEquals($test_category->getTasks(), [$test_task]);
-
         }
 
         function test_getTasks()
@@ -229,7 +228,6 @@
 
             //Assert
             $this->assertEquals($test_category->getTasks(), [$test_task, $test_task2]);
-
         }
 
     }
